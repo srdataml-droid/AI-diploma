@@ -1,1 +1,121 @@
-new
+📊 Telco Customer Churn Prediction
+🚀 Project Overview
+
+This project develops a machine learning pipeline to predict customer churn in a telecommunications dataset. The objective is to identify customers at risk of leaving and provide actionable insights for retention strategies.
+
+The approach emphasizes:
+
+Structured data preprocessing
+Feature engineering
+Model comparison
+Balanced evaluation using F1 score
+🧠 Problem Statement
+
+Customer churn directly impacts revenue and long-term growth in telecom businesses.
+
+This project answers:
+
+Which customers are likely to churn?
+How accurately can churn be predicted?
+Which model provides the best balance between precision and recall?
+📁 Dataset
+Source: Kaggle
+Dataset: Telco Customer Churn
+Features include:
+Customer demographics
+Service subscriptions
+Billing and payment methods
+Tenure and usage behavior
+⚙️ Methodology
+1. Data Cleaning
+Removed irrelevant identifier (customerID)
+Converted TotalCharges to numeric (handled coercion errors)
+Imputed missing values using mean substitution
+Removed duplicate records
+2. Feature Engineering
+Created a tenure segmentation feature (new_tenure):
+new_customer (0–5 months)
+regular_customer (6–35 months)
+loyal_customer (36+ months)
+
+This improves behavioral grouping and model interpretability.
+
+3. Feature Preparation
+Separated categorical and numerical features
+Applied One-Hot Encoding to categorical variables
+Combined encoded categorical features with numerical features
+4. Target Variable
+Encoded churn as binary:
+Yes → 1
+No → 0
+5. Data Splitting Strategy
+Used train-test split with stratification to preserve class distribution
+Applied Stratified K-Fold awareness to reduce bias in class imbalance scenarios
+6. Model Pipeline
+
+A Scikit-learn Pipeline was used for Logistic Regression:
+
+StandardScaler → feature normalization
+LogisticRegression (class_weight='balanced') → handles class imbalance
+7. Models Trained
+Logistic Regression (baseline + balanced)
+Decision Tree Classifier
+Random Forest Classifier
+📊 Model Performance
+🎯 F1 Score Comparison
+Model	F1 Score	Business Interpretation
+Logistic Regression	0.624 (~62%)	Correctly predicts churn behavior in ~6 out of 10 customers
+Random Forest	0.537 (~54%)	Moderate performance but misses a significant number of churners
+Decision Tree	0.488 (~49%)	Weak generalization and inconsistent predictions
+🧠 Performance Analysis
+🥇 Logistic Regression (Best Model)
+Achieved the highest F1 score
+Strong recall (~77%), meaning most churners are detected
+Balanced trade-off between false positives and false negatives
+🌲 Random Forest
+Highest accuracy (~78%)
+Lower recall (~47%) → fails to identify many churners
+Better precision, but weaker in capturing churn risk
+🌳 Decision Tree
+Lowest F1 score
+Poor balance between precision and recall
+Likely overfitting to training data
+💼 Business Interpretation
+⭐ Key Insight:
+
+The best model (Logistic Regression) correctly identifies churn behavior in approximately 6 out of every 10 customers.
+
+What this means:
+Enables targeted retention campaigns
+Reduces random customer outreach
+Helps prioritize high-risk customers
+Trade-off:
+Some churners are still missed
+Some non-churners may be incorrectly flagged
+🔍 Key Observations
+Customer tenure strongly influences churn
+Contract type significantly impacts retention
+Billing methods correlate with churn likelihood
+⚠️ Limitations
+No hyperparameter tuning applied
+Cross-validation not fully utilized for performance averaging
+Threshold optimization not finalized
+Feature importance analysis not included
+🔮 Future Improvements
+Apply GridSearchCV for hyperparameter tuning
+Optimize classification threshold for better F1 score
+Experiment with advanced models:
+Gradient Boosting
+XGBoost / LightGBM
+Perform feature importance analysis
+Deploy model via web application (Flask / Streamlit)
+🛠️ Tech Stack
+Python
+Pandas, NumPy
+Matplotlib, Seaborn
+Scikit-learn
+📌 Conclusion
+
+This project demonstrates a structured approach to solving a real-world classification problem using machine learning.
+
+While the current best model achieves an F1 score of ~62%, it already provides meaningful predictive capability. With further optimization, the system can evolve into a reliable decision-support tool for customer retention strategies.
