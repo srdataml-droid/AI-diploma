@@ -1,4 +1,5 @@
 📊 Telco Customer Churn Prediction
+colab notebook: https://colab.research.google.com/drive/1WxOZ_Lay7GLq8c47JO19zyv0ws5bj0SO#scrollTo=W1mvqJbECgAK
 🚀 Project Overview
 
 This project develops a machine learning pipeline to predict customer churn in a telecommunications dataset. The objective is to identify customers at risk of leaving and provide actionable insights for retention strategies.
